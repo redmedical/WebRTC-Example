@@ -27,6 +27,16 @@ With the server running, open a recent version of Firefox, Chrome, or Safari and
 
 Recent versions of Chrome require secure websockets for WebRTC. Thus, this example utilizes HTTPS. Included is a self-signed certificate that must be accepted in the browser for the example to work.
 
+iOS needs to import and trust the certificate to allow a secure WebSocket connection. So create a certificate with a fitting "common name" with this command:
+
+```
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+```
+
+Please be aware that you need to use a passphrase to be able to enter the "common name" (in the source "red" is used as passphrase).
+
+After importing the certificate into your iOS device (by just clicking on that file) you have to trust it explicitly under Settings -> General -> About -> Certificate Trust Settings
+
 ## Problems?
 
 WebRTC is a rapidly evolving beast. Being an example that I don't check often, I rely on users for reports if something breaks. Issues and pull requests are greatly appreciated.
